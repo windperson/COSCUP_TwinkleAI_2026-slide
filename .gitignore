@@ -6,3 +6,5 @@
 /slides_src/**/*_files/
 
 **/*.quarto_ipynb
+
+index.html
