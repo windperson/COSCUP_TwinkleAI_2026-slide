@@ -1,0 +1,12 @@
+project:
+  title: "在地的模型當然要可以跑在地端"
+  render: 
+    - slides_src/index.qmd
+
+format:
+  html:
+    mermaid:
+      theme: forest
+  revealjs:
+    mermaid:
+      theme: forest

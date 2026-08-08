@@ -1,0 +1,101 @@
+---
+title: 在地的模型當然<br/>要可以跑在地端
+
+author: 老鮑伯
+format:
+    revealjs:
+        width: 1300
+        height: 1000
+        slide-tone: false
+        theme: simple
+        menu:
+            side: right
+        slide-number: true
+        include-in-header: 
+            text: |
+                <style>
+                .center-xy {
+                    margin: 0;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    -ms-transform: translateY(-50%), translateX(-50%);
+                    transform: translateY(-50%), translateX(-50%);
+                }
+                .text-center {
+                    text-align: center;
+                }
+                </style>
+from: markdown+emoji
+code-annotations: below
+---
+
+# Agenda
+
+:::: {.columns}
+::: {.column width="80%"}
+
+* 地端推論運算架構解析
+* 地端運行 Twinkle AI 模型挑戰
+    * 地端硬體規格 
+    * Ollama
+    * LM Studio
+    * Lemonade
+    * vLLM
+    * oBeaver
+* 結論
+
+:::
+::: {.column width="20%"}
+
+{{< qrcode https://windperson.github.io/COSCUP_TwinkleAI_2026-slide/ width=240 height=240 >}}
+
+::::{.text-center .smaller}
+**Slide URL**
+::::
+
+:::
+::::
+
+# 地端推論運算架構解析
+
+##
+
+![](./pics/Local_AI_architect.svg){.r-stretch}
+
+地端主流以 [OpenAI compatible RESTful API](https://bentoml.com/llm/llm-inference-basics/openai-compatible-api){target="_blank"} 做為與其他框架的整合方法。
+
+## GPU vs NPU
+
+* GPU (Graphics Processing Unit)
+* NPU (Neural Processing Unit)
+
+# 其他參考資料 {.smallest}
+
+::: {style="overflow-y: scroll; height: 860px;"}
+
+**GGUF file format**
+
+* [GGUF Official format explain](https://github.com/ggml-org/ggml/blob/master/docs/gguf.md)
+* [Hugging Face](https://huggingface.co/docs/hub/gguf)
+* [Running GGUF and Safetensors Models: The Complete Engineer’s Guide to Modern AI Model Formats](https://medium.com/@imrohitkushwaha2001/running-gguf-and-safetensors-models-the-complete-engineers-guide-to-modern-ai-model-formats-6e7745e0b3b7)
+
+**Books**
+
+* [Inference Engineering](https://www.baseten.co/inference-engineering/)
+
+**Video**
+
+* [LLM Inference Deep Dive: TensortRT-LLM, KV Cache, Prefill vs Decode, TTFT, TPOT](https://youtu.be/cQM2RfT4VpY)
+* [5 Essential LLM Optimization](https://www.youtube.com/playlist?list=PLuOtX1AplgcvdjCK-tk4TPiYOGsKkil6J)
+* [Prototype and Deploy LLM Applications on Intel® NPUs](https://www.intel.com/content/www/us/en/developer/videos/prototype-deploy-llm-applications-on-intel-npus.html)
+
+**Papers/Web articles**
+
+* [LLM Inference at the Edge: Mobile, NPU, and GPU Performance Efficiency Trade-offs Under Sustained Load](https://arxiv.org/abs/2603.23640v1)
+* [The Processor War - CPU vs GPU vs TPU](https://www.linkedin.com/pulse/processor-war-cpu-vs-gpu-tpu-jeugene-john-r7toc/)
+* [Intel® Core™ Ultra Series 3 processor Datasheet](https://www.intel.com/content/www/us/en/content-details/872188/intel-core-ultra-series-3-processor-datasheet-volume-1-of-2.html)
+* [NPU Comparison 2026](https://localaimaster.com/blog/npu-comparison-2026)
+* [除英伟达外硬件平台的AI架构生态和大模型部署情况调研](https://zhuanlan.zhihu.com/p/1939465070796071861)
+
+:::
