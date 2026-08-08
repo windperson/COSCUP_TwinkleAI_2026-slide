@@ -208,7 +208,7 @@
 <li>GPU (Graphics Processing Unit)
 <ul>
 <li>高效能</li>
-<li>記憶體與 CPU 分開，高速高成本 VRAM</li>
+<li>除了整合/UMA架構之外，其他為獨立高速高成本 VRAM</li>
 <li>大部分的 LLM 推論框架都支援 GPU<br>(通常模型不需轉檔)</li>
 <li>算力強VRAM大的可以對模型做再次加工(如量化、蒸餾、LoRA)</li>
 </ul></li>
@@ -217,9 +217,40 @@
 <li>省電(適合低功耗設備/長時間運行的場合)</li>
 <li>針對 AI 推論硬體加速</li>
 <li>記憶體與CPU共用/整合在 SoC 晶片內</li>
-<li>目前仍以 ONNX Runtime 為主流，對於 LLM 推論框架的支援度不如 GPU<br>(需從原始 Safetensors 或 GGUF 格式的模型轉檔)</li>
+<li>目前仍以 ONNX Runtime 為主流，對於 LLM 推論框架的支援度不如 GPU<br>(需從原始 Safe tensors 或 GGUF 格式模型轉檔)</li>
 </ul></li>
 </ul>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<img data-src="./pics/AMD_UMA.png" class="r-stretch">
+</section>
+<section id="npu-各自的硬體設計架構" class="slide level2">
+<h2>NPU 各自的硬體設計架構</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+
+</div><div class="column" style="width:50%;">
+<p><img data-src="./pics/Intel_NPU.png"></p>
+</div></div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="./pics/AMD_NPU.png" class="r-stretch"></section>
+<section id="gguf-file-format" class="slide level2">
+<h2>GGUF file format</h2>
+<p>目前LLM模型的主流格式為 GGUF (GGML Unified Format)</p>
+<p><a href="https://github.com/ggml-org/ggml" target="_blank">GGML 團隊</a>所提出的統一格式，目的是為了讓不同的 LLM 推論框架可以共用同一個模型檔案。</p>
+<p>llama.cpp 開源專案有提供轉換的 Python script，將原始的 safetensors 模型轉換成 GGUF 格式。</p>
+
+<img data-src="./pics/gguf_convert_flow.png" class="r-stretch"></section>
+<section id="gguf-模型檔即時轉換" class="slide level2">
+<h2>GGUF 模型檔即時轉換</h2>
+<p>Intel 早期的 OpenVINO LLM 推論框架，對於 GGUF 模型檔的支援度不佳，必須先將 GGUF 模型檔轉換成 ONNX 格式才能使用。</p>
+<p>今年開始的版本提供即時轉換功能，因此可以直接使用 GGUF 模型檔。</p>
+<p><a href="https://docs.openvino.ai/2026/openvino-workflow/model-preparation.html" class="uri">https://docs.openvino.ai/2026/openvino-workflow/model-preparation.html</a></p>
+<p>後續的改良會使用 llama.cpp 開源專案的成果來做 GGUF 檔案轉換：<a href="https://github.com/openvinotoolkit/openvino/pull/36579" class="uri">https://github.com/openvinotoolkit/openvino/pull/36579</a></p>
 </section></section>
 <section id="其他參考資料" class="title-slide slide level1 smallest center">
 <h1>其他參考資料</h1>
