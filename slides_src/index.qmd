@@ -69,14 +69,57 @@ code-annotations: below
 
 * GPU (Graphics Processing Unit)
    * 高效能
-   * 記憶體與 CPU 分開，高速高成本 VRAM
+   * 除了整合/UMA架構之外，其他為獨立高速高成本 VRAM
    * 大部分的 LLM 推論框架都支援 GPU<br/>(通常模型不需轉檔)
    * 算力強VRAM大的可以對模型做再次加工(如量化、蒸餾、LoRA)
 * NPU (Neural Processing Unit)
    * 省電(適合低功耗設備/長時間運行的場合)
    * 針對 AI 推論硬體加速
    * 記憶體與CPU共用/整合在 SoC 晶片內
-   * 目前仍以 ONNX Runtime 為主流，對於 LLM 推論框架的支援度不如 GPU<br/>(需從原始 Safetensors 或 GGUF 格式的模型轉檔)
+   * 目前仍以 ONNX Runtime 為主流，對於 LLM 推論框架的支援度不如 GPU<br/>(需從原始 Safe tensors 或 GGUF 格式模型轉檔)
+
+##
+
+![](./pics/AMD_UMA.png){.r-stretch}
+
+## NPU 各自的硬體設計架構
+
+:::: {.columns}
+::: {.column width="50%"}
+
+:::
+::: {.column width="50%"}
+
+![](./pics/Intel_NPU.png)
+:::
+::::
+
+## 
+
+![](./pics/AMD_NPU.png)
+
+## GGUF file format
+
+目前LLM模型的主流格式為 GGUF (GGML Unified Format)
+
+
+[GGML 團隊](https://github.com/ggml-org/ggml){target="_blank"}所提出的統一格式，目的是為了讓不同的 LLM 推論框架可以共用同一個模型檔案。
+
+
+llama.cpp 開源專案有提供轉換的 Python script，將原始的 safetensors 模型轉換成 GGUF 格式。 
+
+![](./pics/gguf_convert_flow.png)
+
+## GGUF 模型檔即時轉換
+
+Intel 早期的 OpenVINO LLM 推論框架，對於 GGUF 模型檔的支援度不佳，必須先將 GGUF 模型檔轉換成 ONNX 格式才能使用。
+
+今年開始的版本提供即時轉換功能，因此可以直接使用 GGUF 模型檔。
+
+<https://docs.openvino.ai/2026/openvino-workflow/model-preparation.html>
+
+
+後續的改良會使用 llama.cpp 開源專案的成果來做 GGUF 檔案轉換：<https://github.com/openvinotoolkit/openvino/pull/36579>
 
 
 # 其他參考資料 {.smallest}
