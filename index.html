@@ -205,8 +205,20 @@
 <section id="gpu-vs-npu" class="slide level2">
 <h2>GPU vs NPU</h2>
 <ul>
-<li>GPU (Graphics Processing Unit)</li>
-<li>NPU (Neural Processing Unit)</li>
+<li>GPU (Graphics Processing Unit)
+<ul>
+<li>高效能</li>
+<li>記憶體與 CPU 分開，高速高成本 VRAM</li>
+<li>大部分的 LLM 推論框架都支援 GPU<br>(通常模型不需轉檔)</li>
+<li>算力強VRAM大的可以對模型做再次加工(如量化、蒸餾、LoRA)</li>
+</ul></li>
+<li>NPU (Neural Processing Unit)
+<ul>
+<li>省電(適合低功耗設備/長時間運行的場合)</li>
+<li>針對 AI 推論硬體加速</li>
+<li>記憶體與CPU共用/整合在 SoC 晶片內</li>
+<li>目前仍以 ONNX Runtime 為主流，對於 LLM 推論框架的支援度不如 GPU<br>(需從原始 Safetensors 或 GGUF 格式的模型轉檔)</li>
+</ul></li>
 </ul>
 </section></section>
 <section id="其他參考資料" class="title-slide slide level1 smallest center">
