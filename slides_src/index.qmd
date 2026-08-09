@@ -87,16 +87,23 @@ code-annotations: below
 :::: {.columns}
 ::: {.column width="50%"}
 
+
 :::
 ::: {.column width="50%"}
 
 ![](./pics/Intel_NPU.png)
+
+### Intel 
+
 :::
 ::::
 
 ## 
 
+
 ![](./pics/AMD_NPU.png)
+
+### AMD
 
 ## GGUF file format
 
@@ -216,6 +223,8 @@ c/p值還行的 _AMD Radeon RX 9060 XT_(16GB VRAM) 顯示卡
 Lemonade 使用 AMD Rayon AI NPU 的 LLM 推論框架（也是要轉模型），目前在 gpt-oss-20b 有奇怪的問題：
 
 ![](./pics/lemonade_run_amd_npu_bug.png){.r-stretch}
+
+但另一個開源的 NPU LLM 推論框架 [FastFlowLM](https://github.com/ROCm/FastFlowLM){target="_blank"} 內建在 Lemonade 正常的😅
 
 ## vLLM {.scrollable}
 
