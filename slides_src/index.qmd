@@ -132,12 +132,58 @@ Intel 早期的 OpenVINO LLM 推論框架，對於 GGUF 模型檔的支援度不
 
 ![](./pics/target_model.png){.r-stretch}
 
+## {.scrollable}
+
+[https://huggingface.co/twinkle-ai/gemma-3-4B-T1-it-GGUF](https://huggingface.co/twinkle-ai/gemma-3-4B-T1-it-GGUF){target="_blank"}
+
+![](./pics/target_model_2.png){.r-stretch}
+
+
 ## 使用的地端算力設備
 
 目前對於軟體支援度/VRAM大小比較起來  
 c/p值還行的 _AMD Radeon RX 9060 XT_(16GB VRAM) 顯示卡
 
 ![](./pics/target_computing_device.png){.r-stretch}
+
+##
+
+![](./pics/target_computing_device_2.png){.r-stretch}
+
+[https://www.techpowerup.com/gpu-specs/radeon-rx-9060-xt-16-gb.c4293](https://www.techpowerup.com/gpu-specs/radeon-rx-9060-xt-16-gb.c4293){target="_blank" .smallest}
+
+## 地端AI推論工具/框架＆是否work
+
+:::: {.columns}
+::: {.column width="65%"}
+
+| 工具/框架 | 是否work | 備註 |
+|----------|:--------:|------|    
+| [Ollama](https://ollama.com/) | ✅ | 開箱即用 |
+| [LM Studio](https://www.lmstudio.ai/) | ✅ | 要手動裝 ROCm provider |
+| [Lemonade](https://lemonade-server.ai/) | ✅ | 要手動裝 ROCm provider |
+| [vLLM](https://vllm.ai/) | ⁉️ | Windows WSL2 跑目標模型crash |
+| [oBeaver](https://microsoft.github.io/obeaver/) | ❌| 需要手動模型轉檔<br/>(底層使用 [MS Foundry Local](https://www.foundrylocal.ai/){target="_blank"} 實現模型運算) |
+
+:::
+::: {.column width="35%"}
+
+<br/>目前僅使用Windows 11筆電可跑的框架<br/>
+
+:::
+::::
+
+## Ollama
+
+* 直接使用 Hugging Face 提供的指令跑就會自動下載/執行模型
+
+![](./pics/ollama_run_screen.png){.r-stretch}
+
+## Ollama run log
+
+* 使用的VRAM最少<br/>
+
+![](./pics/ollama_run_log.png){.r-stretch}
 
 
 
