@@ -232,12 +232,14 @@
 
 </div><div class="column" style="width:50%;">
 <p><img data-src="./pics/Intel_NPU.png"></p>
+<h3 id="intel">Intel</h3>
 </div></div>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
 
-<img data-src="./pics/AMD_NPU.png" class="r-stretch"></section>
+<img data-src="./pics/AMD_NPU.png" class="r-stretch"><h3 id="amd">AMD</h3>
+</section>
 <section id="gguf-file-format" class="slide level2">
 <h2>GGUF file format</h2>
 <p>目前LLM模型的主流格式為 GGUF (GGML Unified Format):</p>
@@ -359,6 +361,7 @@ c/p值還行的 <em>AMD Radeon RX 9060 XT</em>(16GB VRAM) 顯示卡</p>
 <h2></h2>
 <p>Lemonade 使用 AMD Rayon AI NPU 的 LLM 推論框架（也是要轉模型），目前在 gpt-oss-20b 有奇怪的問題：</p>
 <img data-src="./pics/lemonade_run_amd_npu_bug.png" class="r-stretch">
+<p>但另一個開源的 NPU LLM 推論框架 <a href="https://github.com/ROCm/FastFlowLM" target="_blank">FastFlowLM</a> 內建在 Lemonade 正常的😅</p>
 </section>
 <section id="vllm" class="slide level2 scrollable">
 <h2>vLLM</h2>
