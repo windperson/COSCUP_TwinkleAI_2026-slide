@@ -164,7 +164,7 @@
 <div class="column" style="width:80%;">
 <ul>
 <li>地端推論運算架構解析</li>
-<li>地端運行 Twinkle AI 模型挑戰
+<li>地端設備運行 Twinkle AI 模型挑戰
 <ul>
 <li>地端硬體規格</li>
 <li>Ollama</li>
@@ -217,7 +217,7 @@
 <li>省電(適合低功耗設備/長時間運行的場合)</li>
 <li>針對 AI 推論硬體加速</li>
 <li>記憶體與CPU共用/整合在 SoC 晶片內</li>
-<li>目前仍以 ONNX Runtime 為主流，對於 LLM 推論框架的支援度不如 GPU<br>(需從原始 Safe tensors 或 GGUF 格式模型轉檔)</li>
+<li>目前仍以 ONNX Runtime 為主流，對於 LLM 推論框架的支援度不如 GPU<br>(需從原始 Safetensors 或 GGUF 格式模型轉檔)</li>
 </ul></li>
 </ul>
 </section>
@@ -240,9 +240,9 @@
 <img data-src="./pics/AMD_NPU.png" class="r-stretch"></section>
 <section id="gguf-file-format" class="slide level2">
 <h2>GGUF file format</h2>
-<p>目前LLM模型的主流格式為 GGUF (GGML Unified Format)</p>
-<p><a href="https://github.com/ggml-org/ggml" target="_blank">GGML 團隊</a>所提出的統一格式，目的是為了讓不同的 LLM 推論框架可以共用同一個模型檔案。</p>
-<p>llama.cpp 開源專案有提供轉換的 Python script，將原始的 safetensors 模型轉換成 GGUF 格式。</p>
+<p>目前LLM模型的主流格式為 GGUF (GGML Unified Format):</p>
+<p><a href="https://github.com/ggml-org/ggml/blob/master/docs/gguf.md" target="_blank">https://github.com/ggml-org/ggml/blob/master/docs/gguf.md</a> <br><br> <a href="https://github.com/ggml-org/ggml" target="_blank">GGML 團隊</a>所提出的統一格式，目的是為了讓不同的 LLM 推論框架可以共用同一個模型檔案。</p>
+<p>llama.cpp 開源專案有提供轉換的 Python script，將原始 Hugging Face 的 Safetensors 模型轉換成 GGUF 格式。</p>
 
 <img data-src="./pics/gguf_convert_flow.png" class="r-stretch"></section>
 <section id="gguf-模型檔即時轉換" class="slide level2">
@@ -251,6 +251,23 @@
 <p>今年開始的版本提供即時轉換功能，因此可以直接使用 GGUF 模型檔。</p>
 <p><a href="https://docs.openvino.ai/2026/openvino-workflow/model-preparation.html" class="uri">https://docs.openvino.ai/2026/openvino-workflow/model-preparation.html</a></p>
 <p>後續的改良會使用 llama.cpp 開源專案的成果來做 GGUF 檔案轉換：<a href="https://github.com/openvinotoolkit/openvino/pull/36579" class="uri">https://github.com/openvinotoolkit/openvino/pull/36579</a></p>
+</section></section>
+<section>
+<section id="地端設備運行-twinkle-ai-模型-挑戰" class="title-slide slide level1 center">
+<h1>地端設備運行<br>Twinkle AI 模型<br>挑戰</h1>
+
+</section>
+<section id="目標模型" class="slide level2">
+<h2>目標模型</h2>
+<p>為了力求能以最經濟實惠&amp;簡單的方式跑起來，使用 Twinkle AI T1 Series 模型，直接取用 GGUF 格式模型檔。</p>
+<p><a href="https://twinkleai.tw/models" target="_blank">https://twinkleai.tw/models</a></p>
+<img data-src="./pics/target_model.png" class="r-stretch">
+</section>
+<section id="使用的地端算力設備" class="slide level2">
+<h2>使用的地端算力設備</h2>
+<p>目前對於軟體支援度/VRAM大小比較起來<br>
+c/p值還行的 <em>AMD Radeon RX 9060 XT</em>(16GB VRAM) 顯示卡</p>
+<img data-src="./pics/target_computing_device.png" class="r-stretch">
 </section></section>
 <section id="其他參考資料" class="title-slide slide level1 smallest center">
 <h1>其他參考資料</h1>
