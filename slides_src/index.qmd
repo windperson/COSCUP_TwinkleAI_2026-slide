@@ -185,7 +185,54 @@ c/p值還行的 _AMD Radeon RX 9060 XT_(16GB VRAM) 顯示卡
 
 ![](./pics/ollama_run_log.png){.r-stretch}
 
+## LM Studio {.scrollable}
 
+基本上跟 Ollama 一樣，使用 Hugging Face 網頁上的連結點選後，會自動導引至LM Studio 進行下載/執行模型
+
+![](./pics/lmstudio_run_01.png)
+
+
+![](./pics/lmstudio_run_02.png)
+
+## 
+
+但目前這張 Radeon RX 9060 XT 顯示卡 在 LM Studio 使用 ROCm provider 有一個[配合其他AMD GPU 同時運行的bug](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues/1163#issuecomment-4800375318){target="_blank"}，已經拖半年沒有解決😏
+
+![](./pics/lmstudio_run_bug.png){.r-stretch}
+
+## Lemonade {.scrollable}
+
+手動安裝 ROCm provider 和 Hugging Face downlaoder 之後，就可以搜尋之後下載 Twinkle AI T1 Series 模型，並且執行模型。
+
+![](./pics/lemonade_install_rocm.png)
+
+
+![](./pics/lemonade_install_rocm_done.png)
+
+![](./pics/lemonade_run.png)
+
+## {.scrollable}
+
+Lemonade 使用 AMD Rayon AI NPU 的 LLM 推論框架（也是要轉模型），目前在 gpt-oss-20b 有奇怪的問題：
+
+![](./pics/lemonade_run_amd_npu_bug.png){.r-stretch}
+
+## vLLM {.scrollable}
+
+目前 Twinkle AI T1 Series 模型在 vLLM 上跑會 crash，原因是 base model 使用的 Gemma 3 base model 需要 v4.50.x 舊版 Transformer python PIP 套件，但目前最新 nightly build 版本的 vLLM 已經使用 v5.1.x 。
+
+![](./pics/vllm_run_crash.png)
+
+## oBeaver
+
+oBeaver 是 [Microsoft Foundry Local](https://github.com/microsoft/Foundry-Local){target="_blank"} 的前端 GUI，底層使用 Foundry Local 做模型運算。
+
+目前需要手動執行轉換工具轉換 GGUF 模型檔成 Foundry Local 可使用的格式，才能在 oBeaver 上執行。
+[https://www.khawarhabib.com/blogs/the-ultimate-guide-to-compiling-hugging-face-models-for-foundry-local](https://www.khawarhabib.com/blogs/the-ultimate-guide-to-compiling-hugging-face-models-for-foundry-local){target="_blank"}
+
+（所以我們就先不管它 _再看看_ 😅）
+
+# 結論
 
 # 其他參考資料 {.smallest}
 
