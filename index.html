@@ -263,11 +263,79 @@
 <p><a href="https://twinkleai.tw/models" target="_blank">https://twinkleai.tw/models</a></p>
 <img data-src="./pics/target_model.png" class="r-stretch">
 </section>
+<section id="section-3" class="slide level2 scrollable">
+<h2></h2>
+<p><a href="https://huggingface.co/twinkle-ai/gemma-3-4B-T1-it-GGUF" target="_blank">https://huggingface.co/twinkle-ai/gemma-3-4B-T1-it-GGUF</a></p>
+<img data-src="./pics/target_model_2.png" class="r-stretch">
+</section>
 <section id="使用的地端算力設備" class="slide level2">
 <h2>使用的地端算力設備</h2>
 <p>目前對於軟體支援度/VRAM大小比較起來<br>
 c/p值還行的 <em>AMD Radeon RX 9060 XT</em>(16GB VRAM) 顯示卡</p>
 <img data-src="./pics/target_computing_device.png" class="r-stretch">
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<img data-src="./pics/target_computing_device_2.png" class="r-stretch">
+<p><a href="https://www.techpowerup.com/gpu-specs/radeon-rx-9060-xt-16-gb.c4293" class="smallest" target="_blank">https://www.techpowerup.com/gpu-specs/radeon-rx-9060-xt-16-gb.c4293</a></p>
+</section>
+<section id="地端ai推論工具框架是否work" class="slide level2">
+<h2>地端AI推論工具/框架＆是否work</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>工具/框架</th>
+<th style="text-align: center;">是否work</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://ollama.com/">Ollama</a></td>
+<td style="text-align: center;">✅</td>
+<td>開箱即用</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.lmstudio.ai/">LM Studio</a></td>
+<td style="text-align: center;">✅</td>
+<td>要手動裝 ROCm provider</td>
+</tr>
+<tr class="odd">
+<td><a href="https://lemonade-server.ai/">Lemonade</a></td>
+<td style="text-align: center;">✅</td>
+<td>要手動裝 ROCm provider</td>
+</tr>
+<tr class="even">
+<td><a href="https://vllm.ai/">vLLM</a></td>
+<td style="text-align: center;">⁉️</td>
+<td>Windows WSL2 跑目標模型crash</td>
+</tr>
+<tr class="odd">
+<td><a href="https://microsoft.github.io/obeaver/">oBeaver</a></td>
+<td style="text-align: center;">❌</td>
+<td>需要手動模型轉檔<br>(底層使用 <a href="https://www.foundrylocal.ai/" target="_blank">MS Foundry Local</a> 實現模型運算)</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:35%;">
+<p><br>目前僅使用Windows 11筆電可跑的框架<br></p>
+</div></div>
+</section>
+<section id="ollama" class="slide level2">
+<h2>Ollama</h2>
+<ul>
+<li>直接使用 Hugging Face 提供的指令跑就會自動下載/執行模型</li>
+</ul>
+<img data-src="./pics/ollama_run_screen.png" class="r-stretch">
+</section>
+<section id="ollama-run-log" class="slide level2">
+<h2>Ollama run log</h2>
+<ul>
+<li>使用的VRAM最少<br></li>
+</ul>
+<img data-src="./pics/ollama_run_log.png" class="r-stretch">
 </section></section>
 <section id="其他參考資料" class="title-slide slide level1 smallest center">
 <h1>其他參考資料</h1>
